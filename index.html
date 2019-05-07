@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>AJAX Contact Form</title>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="form-container">
+            <form class="contact-form">
+                    <h2>Get in Touch</h2>
+                    <p>Contact us use the get in touch form below</p>
+
+                <!-- Hidden Required Fields -->
+                    <input type="hidden" name="project_name" value="Site Name">
+                    <input type="hidden" name="admin_email" value="admin@mail.com">
+                    <input type="hidden" name="form_subject" value="Form Subject">
+                <!-- END Hidden Required Fields -->
+
+                <input type="text" id="Uname" name="Name" placeholder="Name">
+                <input type="phone" id="Uphone" name="Phone" placeholder="Phone">
+                <input type="mail" id="UMail" name="E-mail" placeholder="E-mail">
+                <textarea rows="10" id="UMessage" name="Message" placeholder="Message"></textarea>
+                <div class="btn-wrapper">
+                    <a href="#" class="btn">Sent Message</a>
+                </div>
+               
+
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
