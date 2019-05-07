@@ -25,13 +25,13 @@ body{
 
 .form-container{
     display: grid;
-    align-items: center;
-    grid-template-columns: 0.5fr;
+    justify-items: center;
+    grid-template-columns: 1fr;
 }
 
 .contact-form{
     background: var(--dark);
-    padding: 2rem;
+    padding: 1.2rem;
     border-radius: 0.2rem;
 }
 
@@ -51,7 +51,7 @@ body{
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 1.2rem;
 }
 
 .btn{
