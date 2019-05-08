@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>AJAX Contact Form</title>
 </head>
 <body>
@@ -21,12 +21,26 @@
                     <input type="hidden" name="form_subject" value="Form Subject">
                 <!-- END Hidden Required Fields -->
 
-                <input type="text" id="Uname" name="Name" placeholder="Name">
-                <input type="phone" id="Uphone" name="Phone" placeholder="Phone">
+                <input type="text" id="UName" name="Name" placeholder="Name">
+                <div id="NameBlank" class="bg-danger text-white my-2 bl-2"></div>
+
+                <input type="phone" id="UPhone" name="Phone" placeholder="Phone">
+                <div id="PhoneBlank" class="bg-danger text-white my-2 bl-2"></div>
+
                 <input type="mail" id="UMail" name="E-mail" placeholder="E-mail">
+
                 <textarea rows="10" id="UMessage" name="Message" placeholder="Message"></textarea>
+                <div id="success" class="bg-success">Your Message was Successfully Sent</div>
+
                 <div class="btn-wrapper">
-                    <a href="#" class="btn">Sent Message</a>
+                    <button class="btn">Sent Message</button>
+                </div>
+
+                <div class="accept-wrapper">
+                    <label class="radio">
+                        <input id="radioBtn" value="yes" name="acception" type="radio">
+                        <div id="acceptionLine" class="radio__text">Consent to the processing of personal data</div>
+                    </label>
                 </div>
                
 
@@ -35,4 +49,6 @@
     </div>
     
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="js/main.js"></script>
 </html>

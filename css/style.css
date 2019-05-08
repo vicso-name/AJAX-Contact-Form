@@ -1,0 +1,167 @@
+/* CSS Variables */
+:root{
+    --primery: #ddd;
+    --green: #28a745;
+    --dark: #343a40;
+    --light: #ffffff;
+}
+
+html{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--light);
+}
+
+body{
+    background: #ffffff;
+    margin: 30px 50px;
+    line-height: 1.4;
+}
+
+.wrapper{
+    display: grid;
+    grid-gap: 20px;
+}
+
+/* Form */
+
+.form-container{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+}
+
+.contact-form{
+    position: relative;
+    background: var(--dark);
+    padding: 1.2rem;
+    border-radius: 0.2rem;
+}
+
+.contact-form input, textarea{
+    display: block;
+    border-radius: 0.2rem;
+    border: none;   
+    width: 100%;
+    margin-top: 1.2rem;
+}
+
+.contact-form input{
+    height: 2rem;
+}
+
+.contact-form label::after {
+    content: "*";
+    position: absolute;
+    color: red;
+    right: -10px;
+    top: 0;
+}
+
+/* Buttont */
+
+.btn-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1.2rem;
+}
+
+.btn{
+    background-color: var(--green);
+    cursor: pointer;
+    color: var(--light);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border: none;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: all .5s ease;
+}
+
+.btn:hover{
+    background-color: #126b26;
+}
+
+/*Valid Fields*/
+
+.bg-danger {
+    background-color: #dc3545;
+    color: var(--light);
+    margin-top: .5rem;
+    padding-left: .5rem;
+}
+
+.bg-success{
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem 0 1rem;
+    width: 100%;
+    background-color: var(--green);
+    color: var(--light);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.unvalidradio{
+    color: red!important;
+}
+
+/*Consent Line*/
+
+.accept-wrapper{
+    position: relative;
+    margin-top: 2rem;
+}
+
+.radio input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    margin: 10px 0 0 7px;
+}
+
+.radio__text {
+    position: relative;
+    padding: 0 0 0 35px;
+    cursor: pointer;
+    font-size: 17px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    color: #6f6e6e
+}
+
+.radio__text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 12px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #b6b7b7;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #fff
+}
+
+.radio__text::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 16px;
+    width: 12px;
+    height: 12px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: var(--green);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .5);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .5);
+    opacity: 0;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s
+}
+
+.radio input:checked+.radio__text:after {
+    opacity: 1
+}
