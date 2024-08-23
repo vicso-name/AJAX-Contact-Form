@@ -1,50 +1,62 @@
-$("form.contact-form").submit(function() {
-	let UserName=document.getElementById('UName').value;
-	let userPhone=document.getElementById('UPhone').value;
-	var RadioBtn=document.getElementById('radioBtn').checked;
+$("form.contact-form").submit(function(event) {
+	event.preventDefault(); // Prevent form submission until validation
 
+	const userName = document.querySelector('#UName').value.trim();
+	const userPhone = document.querySelector('#UPhone').value.trim();
+	const radioBtnChecked = document.querySelector('#radioBtn').checked;
 
-	if(UserName==""){
-		document.getElementById('NameBlank').innerHTML="Please Enter Your Name";
-		return false;
-	
-	  }else if(UserName!=""){
-		document.getElementById('NameBlank').innerHTML="";
-	  }
-	  
-	if(userPhone==""){
-		document.getElementById('PhoneBlank').innerHTML="Please Enter Your Phone";
-		return false;
+	const nameError = document.querySelector('#NameBlank');
+	const phoneError = document.querySelector('#PhoneBlank');
+	const acceptionValidation = document.querySelector('#acceptionLine');
 
-	}else if(userPhone!=""){
-		document.getElementById('PhoneBlank').innerHTML="";
+	// Function to handle error display
+	const showError = (element, message) => {
+		element.innerHTML = message;
+	};
+
+	const clearError = (element) => {
+		element.innerHTML = '';
+	};
+
+	// Validate user name
+	if (!userName) {
+		showError(nameError, "Please Enter Your Name");
+		return;
+	} else {
+		clearError(nameError);
 	}
 
-	if(RadioBtn==false){
-		let acceptionValidation=document.getElementById('acceptionLine');
-		acceptionValidation.classList.add("unvalidradio");
-		return false;
+	// Validate user phone
+	if (!userPhone) {
+		showError(phoneError, "Please Enter Your Phone");
+		return;
+	} else {
+		clearError(phoneError);
+	}
 
-	}else{
-		let acceptionValidation=document.getElementById('acceptionLine');
+	// Validate radio button
+	if (!radioBtnChecked) {
+		acceptionValidation.classList.add("unvalidradio");
+		return;
+	} else {
 		acceptionValidation.classList.remove("unvalidradio");
 	}
 
-	if(UserName!=false && userPhone!=false && RadioBtn!=false){
+	// If validation passes, proceed with AJAX request
+	const form = $(this);
+	$.ajax({
+		type: "POST",
+		url: "mail.php", // Adjust to the correct endpoint
+		data: form.serialize(),
+	}).done(() => {
+		form.find('.bg-success').fadeIn();
+		setTimeout(() => {
+			form.find('.bg-success').fadeOut();
+			form.trigger("reset");
+		}, 3000);
+	}).fail((xhr, status, error) => {
+		console.error("Form submission failed: ", status, error);
+	});
 
-		let th = $(this);
-		$.ajax({
-			type: "POST",
-			url: "mail.php", //Change
-			data: th.serialize()
-		}).done(function() {
-			$(th).find('.bg-success').fadeIn();
-			setTimeout(function() {
-				$(th).find('.bg-success').fadeOut()
-				th.trigger("reset");
-			}, 3000);
-		});
-		return false;
-	}	
-
+	return false; // Ensure form is not submitted through the default action
 });
